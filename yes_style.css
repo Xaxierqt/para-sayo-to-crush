@@ -1,0 +1,158 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f9e3e3;
+    font-family: 'Arial', sans-serif;
+    overflow: hidden; /* Ensure animations stay within bounds */
+    position: relative;
+}
+
+.container {
+    text-align: center;
+    position: relative;
+}
+
+.header_text {
+    font-size: 3em;
+    color: #0083fd;
+    margin-bottom: 20px;
+}
+
+.gif_container img {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+}
+
+#giftButton button {
+    font-size: 18px;
+    padding: 15px 30px;
+    background: linear-gradient(45deg, #ff007f, #ff7f00, #ff00b3, #ffb300);
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0px 0px 10px rgba(255, 105, 180, 0.6);
+    position: relative;
+    z-index: 10; /* Ensure button stays above animations */
+}
+
+#giftButton button:hover {
+    transform: scale(1.1); /* Slightly grow the button */
+    background: linear-gradient(45deg, #ff007f, #ff7f00, #ff00b3, #ffb300);
+    box-shadow: 0px 0px 20px rgba(255, 105, 180, 0.8);
+}
+
+#giftButton button:active {
+    transform: scale(0.95); /* Slightly shrink on click */
+}
+
+#giftButton button:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('https://upload.wikimedia.org/wikipedia/commons/a/a4/Heart_icon_%28colored%29.svg') center no-repeat;
+    background-size: 30px;
+    opacity: 0.3;
+    animation: heartAnimation 1.5s ease-in-out infinite;
+}
+
+@keyframes heartAnimation {
+    0% {
+        transform: scale(1);
+        opacity: 0.3;
+    }
+    50% {
+        transform: scale(1.3);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 0.3;
+    }
+}
+
+@keyframes butterflyAnimation {
+    0% {
+        transform: translate(-50%, -50%) scale(0.5);
+        opacity: 0;
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.2);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(100vw, 100vh) scale(1);
+        opacity: 0;
+    }
+}
+
+#loveLetter {
+    display: none;
+    text-align: center;
+    margin-top: 30px;
+    opacity: 0;
+    transform: translateY(50px); /* Start position below */
+    animation: fadeInBounce 1s forwards;
+}
+
+@keyframes fadeInBounce {
+    0% {
+        opacity: 0;
+        transform: translateY(50px); /* Start below */
+    }
+    50% {
+        opacity: 1;
+        transform: translateY(-10px); /* Slightly up */
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0); /* Final position */
+    }
+}
+
+/* Adding heart and butterfly animations when clicking */
+#giftButton.clicked {
+    animation: butterflyAnimation 3s forwards; /* Butterfly flies out */
+}
+
+#giftButton.clicked:after {
+    display: none; /* Hide the heart when clicked */
+}
+
+#loveLetter p {
+    font-size: 1.5em;
+    font-weight: bold;
+    text-shadow: 2px 2px 8px rgba(255, 255, 255, 0.6);
+    transition: all 0.5s ease-in-out;
+}
+
+#loveLetter p:hover {
+    transform: scale(1.1);
+    text-shadow: 4px 4px 12px rgba(255, 255, 255, 0.8); /* Intense shadow on hover */
+}
+
+/* This will trigger when "Tap me again" is clicked */
+#giftButton.clicked {
+    animation: butterflyAnimation 3s forwards;
+}
+
+#giftButton.clicked {
+    background: linear-gradient(45deg, #ff7f7f, #ff00ff);
+    transform: scale(1.1);
+}
+
+h1.header_text {
+    font-size: 2em;
+    color: #000000;
+    text-align: center;
+    margin-top: 10px;
+}

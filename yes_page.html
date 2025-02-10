@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Knew you would say yes!</title>
+    <link rel="stylesheet" href="./yes_style.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="header_text">Thanks wifey!! u're the Olaf me Hirono</h1>
+        <div class="gif_container">
+            <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExcXNmb2w5cTZqOXVpYnppNms5bGM3aDk2dGQ5ODhldzk5M3hqYmdycSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/Qztardhm4DEAnuNgLO/giphy.gif" alt="GIF">
+        </div>
+
+        <!-- Hidden "Tap this for my gift" button initially -->
+        <div id="giftButton" style="display: none; text-align: center; margin-top: 20px;">
+            <button id="giftButtonText" onclick="showLoveLetter()" style="padding: 10px 20px; font-size: 18px; background: pink; border: none; cursor: pointer;">Tap this for my gift</button>
+        </div>
+
+        <!-- Hidden love letter (appears after clicking the button) -->
+        <div id="loveLetter" style="display: none; text-align: center; margin-top: 30px;">
+            <p> Here’s my letter 4 you Maria!! 🎁💖</p>
+            <p>You’re the bug in my code that I never want fixed, yet the solution I never saw coming.</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Function to show the love letter when the "Tap this for my gift" button is clicked
+        function showLoveLetter() {
+            document.getElementById("loveLetter").style.display = "block"; // Makes the love letter appear
+            document.getElementById("giftButtonText").textContent = "Tap me again"; // Change button text to "Tap me again"
+            document.getElementById("giftButtonText").setAttribute("onclick", "redirectToLoveLetter()"); // Change the button's action
+        }
+
+        // Function to redirect to love-letter.html after clicking "Tap me again"
+        function redirectToLoveLetter() {
+            window.location.href = "love-letter.html"; // Redirect to love-letter.html
+        }
+
+        // Show the "Tap this for my gift" button after the page loads
+        window.onload = function() {
+            document.getElementById("giftButton").style.display = "block"; // Show the gift button
+        }
+    </script> 
+</body>
+</html>

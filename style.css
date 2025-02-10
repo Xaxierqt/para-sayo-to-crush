@@ -1,0 +1,321 @@
+.gallery {
+    --d: 10s;
+    /* duration */
+    display: grid;
+    place-items: center; /* Center both horizontally and vertically */
+    width: 220px;
+    margin-left: 220px;
+  }
+  
+  .gallery > img {
+    grid-area: 1/1;
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border: 10px solid #f2f2f2;
+    box-shadow: 0 0 4px #0007;
+    z-index: 2;
+    animation: slide var(--d) infinite, z-order var(--d) infinite steps(1);
+  }
+  
+  .gallery img:last-child {
+    animation-name: slide, z-order-last;
+  }
+  
+  .gallery > img:nth-child(1) {
+    animation-delay: calc(0*var(--d));
+    --r: 16deg;
+  }
+  
+  .gallery > img:nth-child(2) {
+    animation-delay: calc(-0.2*var(--d));
+    --r: -1deg;
+  }
+  
+  .gallery > img:nth-child(3) {
+    animation-delay: calc(-0.4*var(--d));
+    --r: -19deg;
+  }
+  
+  .gallery > img:nth-child(4) {
+    animation-delay: calc(-0.6*var(--d));
+    --r: 6deg;
+  }
+  
+  .gallery > img:nth-child(5) {
+    animation-delay: calc(-0.8*var(--d));
+    --r: -8deg;
+  }
+  
+  @keyframes slide {
+    10% {
+      transform: translateX(120%) rotate(var(--r));
+    }
+    0%, 100%, 20% {
+      transform: translateX(0%) rotate(var(--r));
+    }
+  }
+  
+  @keyframes z-order {
+    10%, 20% {
+      z-index: 1;
+    }
+    80% {
+      z-index: 2;
+    }
+  }
+  
+  @keyframes z-order-last {
+    10%, 20% {
+      z-index: 1;
+    }
+    90% {
+      z-index: 2;
+    }
+  }
+  
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: grid;
+    place-content: center;
+    background: #ffb1e9;
+    overflow: hidden;
+  }
+  
+  #hedlinecontainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 60px;
+  }
+  
+  #shine {
+    font-size: 60px;
+    font-weight: bold;
+    color: rgba(255, 0, 102, 0.3);
+    z-index: 10;
+    background: linear-gradient(to right, #222, #222 50%, #fff 50%, #222);
+    background-size: 150px;
+    background-clip: text;
+    animation-name: shine;
+    animation-duration: 5s; /* Adjust the duration as needed */
+    animation-iteration-count: infinite;
+    text-shadow: 0 0px 0px rgba(233, 85, 189, 0.419);
+  
+  }
+  
+  @keyframes shine {
+    0%, 10% {
+      background-position: -1000px;
+    }
+    20% {
+      background-position: top left;
+    }
+    90% {
+      background-position: top right;
+    }
+    100% {
+      background-position: 1000px;
+    }
+  }
+  
+  @media only screen and (max-width: 600px) {
+    #shine {
+    font-size: 22px;
+  }
+  #hedlinecontainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+    margin-bottom: 60px;
+  }
+  
+  .gallery {
+    --d: 10s;
+    /* duration */
+    display: grid;
+    place-items: center; /* Center both horizontally and vertically */
+    width: 150px;
+    margin-left: 60px;
+  }
+  }
+  /* Falling Petals Style */
+.petal {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-color: pink;
+    border-radius: 50%;
+    opacity: 0.8;
+    animation: none;
+}
+
+/* Petal Falling Animation */
+@keyframes fallingPetals {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh) rotate(360deg); /* Petals rotate as they fall */
+        opacity: 0; /* Fade out */
+    }
+}
+
+/* Small Envelope Style */
+#small-envelope {
+    width: 80px;
+    height: 60px;
+    background-image: url('envelope.png'); /* Envelope image */
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    bottom: 50px; /* Adjust the position if needed */
+    left: 50%;
+    transform: translateX(-50%);
+    cursor: pointer;
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+/* When Clicked, Envelope "Opens" */
+.open-envelope {
+    transform: translateX(-50%) rotateX(180deg) scale(1.2); /* Flip effect */
+    opacity: 0; /* Make envelope disappear after opening */
+}
+
+/* Make the Next Button Invisible Until Envelope Opens */
+.next-button {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    font-size: 18px;
+    padding: 10px 20px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Next Button Hover Effect */
+.next-button:hover {
+    background-color: #45a049;
+}
+
+/* For Smaller Screens */
+@media only screen and (max-width: 600px) {
+    #shine {
+        font-size: 22px;
+    }
+
+    #hedlinecontainer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 60px;
+    }
+
+    .gallery {
+        --d: 10s;
+        /* duration */
+        display: grid;
+        place-items: center; /* Center both horizontally and vertically */
+        width: 150px;
+        margin-left: 60px;
+    }
+
+    .next-button {
+        font-size: 14px;
+        padding: 8px 15px;
+    }
+}
+/* Falling Petals Style */
+.petal {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.8;
+  animation: none;
+}
+
+/* Petal Falling Animation */
+@keyframes fallingPetals {
+  0% {
+      transform: translateY(0) rotate(0deg);
+      opacity: 1;
+  }
+  100% {
+      transform: translateY(100vh) rotate(360deg); /* Petals rotate as they fall */
+      opacity: 0; /* Fade out */
+  }
+}
+
+/* Small Envelope Style */
+#small-envelope {
+  width: 80px;
+  height: 60px;
+  background-image: url('envelope.png'); /* Envelope image */
+  background-size: cover;
+  background-position: center;
+  position: absolute;
+  bottom: 50px; /* Adjust the position if needed */
+  left: 50%;
+  transform: translateX(-50%);
+  cursor: pointer;
+  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+/* When Clicked, Envelope "Opens" */
+.open-envelope {
+  transform: translateX(-50%) rotateX(180deg) scale(1.2); /* Flip effect */
+  opacity: 0; /* Make envelope disappear after opening */
+}
+
+/* Make the Next Button Invisible Until Envelope Opens */
+.next-button {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  font-size: 18px;
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Next Button Hover Effect */
+.next-button:hover {
+  background-color: #45a049;
+}
+
+/* For Smaller Screens */
+@media only screen and (max-width: 600px) {
+  #shine {
+      font-size: 22px;
+  }
+
+  #hedlinecontainer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 60px;
+  }
+
+  .gallery {
+      --d: 10s;
+      /* duration */
+      display: grid;
+      place-items: center; /* Center both horizontally and vertically */
+      width: 150px;
+      margin-left: 60px;
+  }
+
+  .next-button {
+      font-size: 14px;
+      padding: 8px 15px;
+  }
+}
